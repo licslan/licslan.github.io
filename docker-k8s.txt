@@ -1,0 +1,433 @@
+安装dockers
+curl -O https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-18.03.1.ce-1.el7.centos.x86_64.rpm && sudo yum install docker-ce-18.03.1.ce-1.el7.centos.x86_64.rpm
+
+
+systemctl start docker
+
+sudo docker run hello-world
+
+
+sudo docker run -d \
+-p 192.168.111.132:5000:5000 \
+--restart=always \
+--name registry \
+-v /mnt/registry:/var/lib/registry \
+registry:latest
+
+
+
+
+
+
+curl -XGET http://192.168.1.211:5000/v2/_catalog
+curl -XGET http:// 192.168.1.211:5000/v2/镜像名/tags/list
+
+mkdir -vp gitlab/{data,logs,config}
+
+
+
+
+sudo docker run -d \
+-p 192.168.111.132:5000:5000 \
+--restart=always \
+--name registry \
+-v /mnt/registry:/var/lib/registry \
+registry:latest
+
+
+安装gitlab
+
+sudo docker run --detach \
+--hostname 192.168.111.132 \
+--publish 192.168.111.132:443:443 --publish 192.168.111.132:80:80 --publish 192.168.111.132:1022:22 \
+--name gitlab \
+--restart always \
+--volume /home/hwl/gitlab/config:/etc/gitlab \
+--volume /home/hwl/gitlab/logs:/var/log/gitlab \
+--volume /home/hwl/gitlab/data:/var/opt/gitlab \
+hub.c.163.com/licslan/gitlab
+
+
+gitlab/gitlab-ce:latest
+
+hub.c.163.com/gutenye/gitlab-ce
+
+
+dGydN85GntX2ZtamLs1U
+
+http://192.168.111.132
+
+
+
+安装 GitLab Runner
+
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash
+
+
+sudo gitlab-runner register \
+--non-interactive \
+--executor "docker" \
+--docker-image "192.168.111.132:5000/ali-maven-docker:3.5.4-jdk-8-alpine" \
+--url "http://192.168.111.132/" \
+--registration-token "jGUftwLNDestzxDDLa5s" \
+--description "Docker runner" \
+--tag-list "shared-runner" \
+--run-untagged \
+--locked="false" \
+--docker-privileged="false"
+
+
+sudo gitlab-runner register \
+--non-interactive \
+--executor "docker" \
+--docker-image "192.168.1.211:5000/ali-maven-docker:3.5.4-jdk-8-alpine" \
+--url "http://192.168.1.211/" \
+--registration-token "KZi5yDuKc6Rrze6GtNY8" \
+--description "Docker runner" \
+--tag-list "shared-runner" \
+--run-untagged \
+--locked="false" \
+--docker-privileged="false"
+
+
+
+
+
+本文使用 socket binding方式运行 docker，需修改/etc/gitlab-runner/config.toml为 socket
+binding方式，并添加 maven库目录的本地映射，这样每次打包时不需要重下依赖包。另
+外末尾加上 pull_policy = "if-not-present"，这样不会每次都拉镜像。
+
+
+[[runners]]
+  name = "Docker runner"
+  url = "http://192.168.111.132/"
+  token = "26bf4a444fbc89d47323fd28e0860e"
+  executor = "docker"
+  [runners.docker]
+    tls_verify = false
+    image = "192.168.111.132:5000/ali-maven-docker:3.5.4-jdk-8-alpine"
+    privileged = false
+    disable_cache = false
+    volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache", "/home/hwl/.m2:/root/.m2"]
+    shm_size = 0
+    pull_policy = "if-not-present"
+  [runners.cache]
+
+
+
+
+  [[runners]]
+name = "Docker runner"
+url = "http://192.168.111.132/"
+token = "d7143d934a8316d4bca29ae84851e9"
+executor = "docker"
+[runners.docker]
+tls_verify = false
+image = "192.168.111.132:5000/ali-maven-docker:3.5.4-jdk-8-alpine"
+privileged = false
+disable_cache = false
+volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache", "/home/john/.m2:/root/.m2"]
+shm_size = 0
+pull_policy = "if-not-present"
+[runners.cache]
+
+
+
+
+
+
+k8s集群  https://blog.csdn.net/nklinsirui/article/details/80581286
+
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF
+setenforce 0
+yum install -y kubelet kubeadm kubectl
+systemctl enable kubelet && systemctl start kubelet
+
+
+安装minikube    https://yq.aliyun.com/articles/221687?spm=5176.10695662.1996646101.searchclickresult.3d253b3eMzCjL5
+curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.28.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+
+启动
+minikube start --registry-mirror=https://registry.docker-cn.com --vm-driver=none
+
+
+打开minikube 控制台
+
+minikube dashboard
+minikube dashboard --url
+http://192.168.111.132:30000
+
+
+yum remove -y kubelet kubeadm kubectl
+
+
+
+[root@localhost ~]# minikube start --registry-mirror=https://registry.docker-cn.com --vm-driver=none
+There is a newer version of minikube available (v0.28.1).  Download it here:
+https://github.com/kubernetes/minikube/releases/tag/v0.28.1
+
+To disable this notification, run the following:
+minikube config set WantUpdateNotification false
+Starting local Kubernetes v1.10.0 cluster...
+Starting VM...
+Getting VM IP address...
+Moving files into cluster...
+Downloading kubeadm v1.10.0
+Downloading kubelet v1.10.0
+
+
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+
+
+
+
+
+
+
+
+-----------------------------------------virtualBox  install--------------------------------------------
+
+curl -O https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-18.03.1.ce-1.el7.centos.x86_64.rpm &&
+
+sudo yum install docker-ce-18.03.1.ce-1.el7.centos.x86_64.rpm && systemctl start docker && systemctl enable docker
+
+
+
+Host A  192.168.0.108   Host  B   192.168.0.109
+
+在主机 A上运行安装命令：
+sudo docker run -d \
+-p 192.168.0.108:5000:5000 \
+--restart=always \
+--name registry \
+-v /mnt/registry:/var/lib/registry \
+registry:latest
+
+sudo docker run -d \
+-p 192.168.111.136:5000:5000 \
+--restart=always \
+--name registry \
+-v /mnt/registry:/var/lib/registry \
+registry:latest
+
+{
+"insecure-registries" : ["192.168.0.108:5000"]
+}
+{
+"insecure-registries" : ["192.168.0.109:5000"]
+}
+
+
+安装gitlab
+
+docker login -u licslan@sina.com hub.c.163.com
+xxxxxxx
+
+
+docker pull hub.c.163.com/licslan/gitlab
+
+mkdir -vp gitlab/{data,logs,config}
+
+
+sudo docker run --detach \
+--hostname 192.168.0.108 \
+--publish 192.168.0.108:443:443 --publish 192.168.0.108:80:80 --publish 192.168.0.108:1022:22 \
+--name gitlab \
+--restart always \
+--volume /home/hwl/gitlab/config:/etc/gitlab \
+--volume /home/hwl/gitlab/logs:/var/log/gitlab \
+--volume /home/hwl/gitlab/data:/var/opt/gitlab \
+hub.c.163.com/licslan/gitlab:latest
+
+安装gitlab runner 
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash
+
+sudo yum install gitlab-runner
+
+sudo gitlab-runner register \
+--non-interactive \
+--executor "docker" \
+--docker-image "192.168.0.108:5000/ali-maven-docker:3.5.4-jdk-8-alpine" \
+--url "http://192.168.0.108/" \
+--registration-token "XxkJ8F-8ybbExf3jLpuU" \
+--description "Docker runner" \
+--tag-list "shared-runner" \
+--run-untagged \
+--locked="false" \
+--docker-privileged="false"
+
+vi /etc/gitlab-runner/config.toml
+
+[[runners]]
+name = "Docker runner"
+url = "http://192.168.0.108/"
+token = "6b5f30323fbe25b66fb01e31c08678"
+executor = "docker"
+[runners.docker]
+tls_verify = false
+ image = "192.168.0.108:5000/ali-maven-docker:3.5.4-jdk-8-alpine"
+privileged = false
+disable_cache = false
+volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache", "/home/hwl/.m2:/root/.m2"]
+shm_size = 0
+pull_policy = "if-not-present"
+[runners.cache]
+
+
+[[runners]]
+  name = "Docker runner"
+  url = "http://192.168.0.108/"
+  token = "6b5f30323fbe25b66fb01e31c08678"
+  executor = "docker"
+  [runners.docker]
+    tls_verify = false
+    image = "192.168.0.108:5000/ali-maven-docker:3.5.4-jdk-8-alpine"
+    privileged = false
+    disable_cache = false
+    volumes = ["/cache"]
+    shm_size = 0
+  [runners.cache]
+
+
+
+
+  安装minikube
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF
+setenforce 0
+yum install -y kubelet kubeadm kubectl
+systemctl enable kubelet && systemctl start kubelet
+
+
+
+curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.28.0/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+minikube start --vm-driver=none
+minikube start --registry-mirror=https://registry.docker-cn.com --vm-driver=none
+
+minikube start
+
+
+
+sudo docker build -t 192.168.111.132:5000/ali-maven-docker:3.5.4-jdk-8-alpine  .
+sudo docker push 192.168.111.132:5000/ali-maven-docker:3.5.4-jdk-8-alpine
+
+
+
+
+
+sudo docker build -t 192.168.111.132:5000/kubectl:1.11.0  .
+sudo docker push 192.168.111.132:5000/kubectl:1.11.0
+
+
+
+
+
+
+
+
+docker pull registry.cn-hangzhou.aliyuncs.com/google-containers/kubernetes-dashboard-amd64:v1.7.1 &&
+docker tag registry.cn-hangzhou.aliyuncs.com/google-containers/kubernetes-dashboard-amd64:v1.7.1 gcr.io/google_containers/kubernetes-dashboard-amd64:v1.8.0
+
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-addon-manager:v6.4-beta.2 && 
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-addon-manager:v6.4-beta.2 gcr.io/google-containers/kube-addon-manager:v6.4-beta.2
+
+docker pull registry.cn-shenzhen.aliyuncs.com/gcrio/k8s-dns-kube-dns-amd64:latest &&
+docker tag registry.cn-shenzhen.aliyuncs.com/gcrio/k8s-dns-kube-dns-amd64:latest gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.5
+
+docker pull registry.cn-hangzhou.aliyuncs.com/google-containers/k8s-dns-dnsmasq-nanny-amd64:1.14.5 &&
+docker tag registry.cn-hangzhou.aliyuncs.com/google-containers/k8s-dns-dnsmasq-nanny-amd64:1.14.5 gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.5
+
+docker pull registry.cn-hangzhou.aliyuncs.com/google-containers/k8s-dns-sidecar-amd64:1.14.5 &&
+docker tag registry.cn-hangzhou.aliyuncs.com/google-containers/k8s-dns-sidecar-amd64:1.14.5 gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.5
+
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/storage-provisioner:v1.8.1 &&
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/storage-provisioner:v1.8.1 gcr.io/k8s-minikube/storage-provisioner:v1.8.1
+
+
+
+
+git  Command
+
+Command line instructions
+
+Git global setup
+git config --global user.name "Administrator"
+git config --global user.email "admin@example.com"
+
+Create a new repository
+git clone http://192.168.111.132/k8s-demo/hello-world-client.git
+cd hello-world-client
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Existing folder
+cd existing_folder
+git init
+git remote add origin http://192.168.111.132/k8s-demo/hello-world-client.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin http://192.168.111.132/k8s-demo/hello-world-client.git
+git push -u origin --all
+git push -u origin --tags
+
+
+
+
+
+-------------------------------    eureka-server，hello-world-client，hello-world-service，gateway
+
+git init
+git remote add origin http://192.168.111.132/k8s-demo/eureka-server.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+
+git init
+git remote add origin http://192.168.111.132/k8s-demo/hello-world-client.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+
+git init
+git remote add origin http://192.168.111.132/k8s-demo/hello-world-service.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+
+git init
+git remote add origin http://192.168.111.132/k8s-demo/gateway.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+
+
+
