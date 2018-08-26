@@ -19,7 +19,6 @@ i just qoute words from 'Docker Containerization Unlocks the Potential for Dev a
 
 Freedom of choice, agile operations and integrated security for legacy and cloud-native applications'
 
-
 Docker的应用场景
 
 Web 应用的自动化打包和发布。
