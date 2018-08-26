@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      简单使用docker on centos7
+title:      简单使用 docker on centos7
 subtitle:   How to simply use docker
 date:       2018-08-26
 author:     licslan
@@ -11,7 +11,7 @@ tags:
 ---  
 
 ```
-so how to use the docker and what`s the difference between the docker and vm tec? <br>
+so how to use the docker and what`s the difference between the docker and vm tec? 
 
 ok if we want to get this down first we just go to https://www.docker.com/ and see what`s going on 
 
@@ -41,7 +41,6 @@ that helps you manage the diverse applications, clouds and infrastructure you ha
 
 business a path forward to future applications.
 
-
 ok let`s get the point 
 
 1.you should install vm and centos7 
@@ -54,8 +53,9 @@ ok let`s get the point
 
 5. next you can run commod  docker --help
 
-6. just study those commod  just like docker pull [images name] docker ps -a  docker images  docker run --  docker rm/rmi  docker load and so on 
+6. just study those commod  just like docker pull [images name] docker ps -a  
 
+    docker images  docker run --  docker rm/rmi  docker load and so on 
 
 ok for now you konw how to use docker  and you will get deep in it and just go to https://www.docker.com 
 
