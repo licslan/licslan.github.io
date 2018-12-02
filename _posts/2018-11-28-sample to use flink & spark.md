@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      sample to use flink & spark
-subtitle:   big data ml elk 
+subtitle:   big data ml flink spark 
 date:       2018-11-28
 author:     LICSLAN
 header-img: img/zjm.jpg
