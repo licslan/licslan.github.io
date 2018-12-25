@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      tec 
+title:      tec kafka zookeeper storm/Jstorm
 subtitle:   kafka zookeeper storm/Jstorm
 date:       2018-12-25
 author:     LICSLAN
