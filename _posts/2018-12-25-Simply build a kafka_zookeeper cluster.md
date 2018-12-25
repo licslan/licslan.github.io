@@ -17,7 +17,7 @@ tags:
 
 废话不多说，让我们来访问kafka.apache.org  Apache的顶级项目大家发现了吧  比如要毕业的dubbo.apache.org  ....<br>
 
-plz  see  the  kafka.apache.org  <br>
+plz  see  the  http://kafka.apache.org/...  <br>
 
 Apache Kafka® is a distributed streaming platform. What exactly does that mean?<br>
 A streaming platform has three key capabilities:<br>
@@ -213,7 +213,7 @@ Kafka Streams is a client library for building mission-critical real-time applic
 
 ok 上面的呢  其实我是官网贴的啊  不过呢   本人也是尝试了哈  自己也做个demo测试也去做过的 kafka 解压的文件里面也自带了zookeeper配置 下面我们来看zookeeper官网 来搭建自己的zookeeper集群 不是kafka自带的 <br>
 
-plz http://zookeeper.apache.org/...  <br>
+plz see the http://zookeeper.apache.org/...  <br>
 Apache ZooKeeper is an effort to develop and maintain an open-source server which enables highly reliable distributed coordination.
 
 What is ZooKeeper?<br>
