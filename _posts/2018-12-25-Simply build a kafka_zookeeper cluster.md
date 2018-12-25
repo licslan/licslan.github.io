@@ -13,6 +13,8 @@ tags:
 
 下面主要介绍使用官网来搭建kafka zookeeper 集群  后面也会整合jstorm讲一个实时计算的demo<br>
 
+主机IP 192.168.108.128(master)   192.168.108.130  192.168.108.131
+
 废话不多说，让我们来访问kafka.apache.org  Apache的顶级项目大家发现了吧  比如要毕业的dubbo.apache.org  ....<br>
 
 plz  see  the  kafka.apache.org  <br>
@@ -207,7 +209,29 @@ The connectors continue to process data, so we can add data to the file and see 
 You should see the line appear in the console consumer output and in the sink file.
 
 Step 8: Use Kafka Streams to process data<br>
-Kafka Streams is a client library for building mission-critical real-time applications and microservices, where the input and/or output data is stored in Kafka clusters. Kafka Streams combines the simplicity of writing and deploying standard Java and Scala applications on the client side with the benefits of Kafka's server-side cluster technology to make these applications highly scalable, elastic, fault-tolerant, distributed, and much more. This quickstart example will demonstrate how to run a streaming application coded in this library.
+Kafka Streams is a client library for building mission-critical real-time applications and microservices, where the input and/or output data is stored in Kafka clusters. Kafka Streams combines the simplicity of writing and deploying standard Java and Scala applications on the client side with the benefits of Kafka's server-side cluster technology to make these applications highly scalable, elastic, fault-tolerant, distributed, and much more. This quickstart example will demonstrate how to run a streaming application coded in this library.<br>
+
+ok 上面的呢  其实我是官网贴的啊  不过呢   本人也是尝试了哈  自己也做个demo测试也去做过的 kafka 解压的文件里面也自带了zookeeper配置 下面我们来看zookeeper官网 来搭建自己的zookeeper集群 不是kafka自带的 <br>
+
+plz http://zookeeper.apache.org/...  <br>
+Apache ZooKeeper is an effort to develop and maintain an open-source server which enables highly reliable distributed coordination.
+
+What is ZooKeeper?<br>
+ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. All of these kinds of services are used in some form or another by distributed applications. Each time they are implemented there is a lot of work that goes into fixing the bugs and race conditions that are inevitable. Because of the difficulty of implementing these kinds of services, applications initially usually skimp on them, which make them brittle in the presence of change and difficult to manage. Even when done correctly, different implementations of these services lead to management complexity when the applications are deployed.
+
+Learn more about ZooKeeper on the ZooKeeper Wiki.
+
+Getting Started<br>
+Start by installing ZooKeeper on a single machine or a very small cluster.
+
+Learn about ZooKeeper by reading the documentation.<br>
+Download ZooKeeper from the release page.
+Getting Involved
+Apache ZooKeeper is an open source volunteer project under the Apache Software Foundation. We encourage you to learn about the project and contribute your expertise. Here are some starter links:
+
+See our How to Contribute to ZooKeeper page.<br>
+Give us feedback: What can we do better?
+Join the mailing list: Meet the community.
 
 
 
