@@ -11,7 +11,8 @@ tags:
      - build a kafka_zookeeper_jstorm
 ---
 
-今天元旦假期第一天  在家没有事情  就大致画了下图 关于jstorm  kafka  zk 集群的图
+今天元旦假期第一天  在家没有事情  就大致画了下图 关于jstorm  kafka  zk 集群的图<br>
+为了实验成功呢  所以建议大家先干掉Linux的防火墙机制  免得自己去开放各种端口...  这里关于防火墙的内容大家可以度娘哈<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/jstorm.png)<br>
 
 咱们来看看zookeeper 集群搭建和kafka搭建效果吧 
@@ -19,7 +20,15 @@ tags:
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/zk_kafka_cluster.png)
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/zk_cluster.jpg)<br>
 
-待会我会将整理好的如何搭建zookeeper 和 kafka 过程写下来...
+待会我会将整理好的如何搭建zookeeper 和 kafka 过程写下来...<br>
+
+后面也会写着关于jstorm/storm集群的搭建效果和过程 <br>
+
+再者后面也会建立两个工程关于kafka消息的生产和消费的springboot-kafka项目和jstorm实时计算的项目springboot-realtime<br>
+
+再者后面也写如何mysql/redis/kafka/jstorm/spark/flink调优.... 同时也会带上关于spark/flink机器学习如何利用的小demo  尽请期待  
+
+
 
 
 
