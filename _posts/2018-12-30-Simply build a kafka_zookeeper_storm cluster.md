@@ -29,7 +29,7 @@ linux3台机子的ssh免密登陆也请度娘Google都行<br>
 
 OK  我们来看测试测试效果吧  我们启动kafka集群生产者和消费者  同时搭建了springboot-kafka 发送消费的demo<br>
 并使用了postman本地测试本地运行的kafka  java程序  来简单生产数据   在Linux环境的服务器也受到了来至本地的Java程序发送的消息<br>
-![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/kafka-product-consumer.jps)<br>
+![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/kafka-product-consumer.jpg)<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/idea-kafka-test.jpg)<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/postman-send-mes.jpg)<br>
 
