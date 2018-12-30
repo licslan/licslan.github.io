@@ -49,7 +49,7 @@ here we go 终于把jstorm 在本地的集群和kafka zookeeper 集群全部搭�
 
 最后说jstorm吧<br>
 先去官网下载kafka Linux的版本  并解压 vim storm.yaml 主要配置如下图:<br>
-![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/jstorm-setting.jpg)<br>
+![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/storm-setting.jpg)<br>
 三台机子的配置一样的  配置好了  分别启动就好   jstorm 分别启动nimbus（负责分发代码） supervisor (处理计算任务)    https://storm.apache.org
 虽说是jstorm  但还是建议看看storm  文档相对完善
 
