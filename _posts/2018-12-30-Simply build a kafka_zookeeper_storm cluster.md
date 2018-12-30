@@ -2,7 +2,7 @@
 layout:     post
 title:      tec kafka zookeeper storm/Jstorm
 subtitle:   kafka zookeeper storm/Jstorm
-date:       2018-12-25
+date:       2018-12-30
 author:     LICSLAN
 header-img: img/zjm.jpg
 catalog: true
