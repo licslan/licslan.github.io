@@ -12,6 +12,13 @@ tags:
 ---
 
 今天元旦假期第一天  在家没有事情  就大致画了下图 关于jstorm  kafka  zk 集群的图<br>
+实验需求： springboot-kafka 生产数据发送kafka集群  springboot-realtime (jstorm应用)消费kafka集群数据并计算处理落地或是可视化展示都可以<br>
+三台虚拟机 192.168.108.128  192.168.108.130 192.168.108.131 <br>  
+gitbash/xshell/vm15/IDEA/jdk8/zookeeper/kafka/jstorm/springboot/cnetos7<br>
+搭建Linux环境就不这里概述了  2G 内存/每台<br>
+linux3台机子的ssh免密登陆也请度娘Google都行<br>
+很多资料也请搭建访问官网学习和搭建<br>
+
 为了实验成功呢  所以建议大家先干掉Linux的防火墙机制  免得自己去开放各种端口...  这里关于防火墙的内容大家可以度娘哈<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/jstorm.png)<br>
 
