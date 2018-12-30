@@ -38,6 +38,8 @@ OK  我们来看测试测试效果吧  我们启动kafka集群生产者和消费
 待会我会将整理好的如何搭建zookeeper 和 kafka 过程写下来...<br>
 
 后面也会写着关于jstorm/storm集群的搭建效果和过程 <br>
+here we go 终于把jstorm 在本地的集群和kafka zookeeper 集群全部搭建完成了  来看一下本地的效果把
+![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/jstorm-cluster.jpg)<br>
 
 再者后面也会建立两个工程关于kafka消息的生产和消费的springboot-kafka项目和jstorm实时计算的项目springboot-realtime<br>
 
