@@ -33,7 +33,7 @@ OK  我们来看测试测试效果吧  我们启动kafka集群生产者和消费
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/idea-kafka-test.jpg)<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/postman-send-mes.jpg)<br>
 后面也会写着关于jstorm/storm集群的搭建效果和过程 <br>
-here we go 终于把jstorm 在本地的集群和kafka zookeeper 集群全部搭建完成了  来看一下本地的效果把
+here we go 终于把jstorm 在本地的集群和kafka zookeeper 集群全部搭建完成了  来看一下本地的效果吧
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/jstorm-cluster.jpg)<br>
 
 最后我会将整理好的如何搭建zookeeper 和 kafka jstorm 过程写下来...<br>
@@ -48,7 +48,7 @@ here we go 终于把jstorm 在本地的集群和kafka zookeeper 集群全部搭�
 三台机子的配置一样的  配置好了  分别启动就好   kafka 启动 分别创建生产者和消费者  命令请去官网看看  https://kafka.apache.org
 
 最后说jstorm吧<br>
-先去官网下载kafka Linux的版本  并解压 vim storm.yaml 主要配置如下图:<br>
+先去官网下载jstorm Linux的版本  并解压 vim storm.yaml 主要配置如下图:<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/storm-setting.jpg)<br>
 三台机子的配置一样的  配置好了  分别启动就好   jstorm 分别启动nimbus（负责分发代码） supervisor (处理计算任务)    https://storm.apache.org
 虽说是jstorm  但还是建议看看storm  文档相对完善
