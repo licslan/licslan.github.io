@@ -12,4 +12,5 @@ tags:
 ---
 
 今天元旦假期第一天  在家没有事情  就大致画了下图 关于jstorm  kafka  zk 集群的图
-![](https://github.com/licslan/licslan.github.io/tree/master/img/jstorm.png)
+![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/jstorm.png)
+
