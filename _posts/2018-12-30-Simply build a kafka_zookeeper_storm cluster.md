@@ -56,19 +56,19 @@ here we go 终于把jstorm 在本地的集群和kafka zookeeper 集群全部搭�
 虽说是jstorm  但还是建议看看storm  文档相对完善
 
 思考？
-如何讲spring boot kafka storm 整合在一起呢  
-一般来说  我们是单独的kafka项目  和单独的storm  项目  storm 需要提交到集群   ./storm jar xxx.jar  xxx.xx.xTopologyMainClass  TopologyName <br>
+如何讲spring boot kafka storm 整合在一起呢  一般来说  我们是单独的kafka项目  和单独的storm  项目  storm 需要提交到集群<br>
+./storm jar xxx.jar  xxx.xx.xTopologyMainClass  TopologyName <br>
 那spring boot启动完了之后加载就会去提交storm到集群  本地整合的时候没有问题  但是提交到集群会有问题的 ...<br>
 本次项目的架构中可以将jstorm换成spring streaming  flink  kafka sream 均可 所以实时计算 离线处理 流式处理计算的架构基本大同小异 <br>
 构建大数据处理平台 以下式我认为需要做的一些步骤吧<br>
-1.需求分析
-2.技术预研和比较分析
-3.搭建测试环境
-4.保证安全
-5.编码开发
-6.测试验证
-7.上线维护
-8.迭代升级
+1.大数据平台需求分析<br>
+2.技术预研和比较分析<br>
+3.搭建测试环境<br>
+4.保证安全<br>
+5.编码开发<br>
+6.测试验证<br>
+7.上线维护<br>
+8.迭代升级<br>
 
 
 
