@@ -50,8 +50,25 @@ here we go 终于把jstorm 在本地的集群和kafka zookeeper 集群全部搭�
 最后说jstorm吧<br>
 先去官网下载jstorm Linux的版本  并解压 vim storm.yaml 主要配置如下图:<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/storm-setting.jpg)<br>
-三台机子的配置一样的  配置好了  分别启动就好   jstorm 分别启动nimbus（负责分发代码） supervisor (处理计算任务)    https://storm.apache.org
+三台机子的配置一样的  配置好了  分别启动就好   jstorm 分别启动nimbus（负责分发代码） supervisor (处理计算任务)    https://storm.apache.org<br>
+下面是提交到集群的示例  不过中间还是有些错误  日志错误
+![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/stormjob-runing.jpg)<br>
 虽说是jstorm  但还是建议看看storm  文档相对完善
+
+思考？
+如何讲spring boot kafka storm 整合在一起呢  
+一般来说  我们是单独的kafka项目  和单独的storm  项目  storm 需要提交到集群   ./storm jar xxx.jar  xxx.xx.xTopologyMainClass  TopologyName <br>
+那spring boot启动完了之后加载就会去提交storm到集群  本地整合的时候没有问题  但是提交到集群会有问题的 ...<br>
+本次项目的架构中可以将jstorm换成spring streaming  flink  kafka sream 均可 所以实时计算 离线处理 流式处理计算的架构基本大同小异 <br>
+构建大数据处理平台 以下式我认为需要做的一些步骤吧<br>
+1.需求分析
+2.技术预研和比较分析
+3.搭建测试环境
+4.保证安全
+5.编码开发
+6.测试验证
+7.上线维护
+8.迭代升级
 
 
 
