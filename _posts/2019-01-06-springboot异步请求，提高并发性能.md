@@ -20,7 +20,7 @@ tags:
 而在Servlet3.0发布后，提供了一个新特性：异步处理请求。可以先释放容器分配给请求的线程与相关资源，减轻系统负担，释放了容器所分配线程的请求，其响应将被延后，可以在耗时处理完成（例如长时间的运算）时再对客户端进行响应。其请求流程为：<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/异步io_servlet3.0.jpg)<br>
 随着Spring5发布，提供了一个响应式Web框架：Spring WebFlux。之后可能就不需要Servlet容器的支持了。以下是其先后对比图：
-![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/spring_webflux.jpg)<br>
+![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/springboot_reactor.jpg)<br>
 原生异步请求，Servlet方式实现异步请求<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/servlet_asyn01.jpg)<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/servlet_asyn01.jpg)<br>
