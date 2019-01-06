@@ -26,38 +26,34 @@ tags:
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/servlet_asyn01.jpg)<br>
 注意：异步请求时，可以利用ThreadPoolExecutor自定义个线程池。<br>
 
-Spring方式实现异步请求
-
+Spring方式实现异步请求<br>
 在Spring中，有多种方式实现异步请求，比如callable、DeferredResult或者WebAsyncTask。每个的用法略有不同，可根据不同的业务场景选择不同的方式。以下主要介绍一些常用的用法<br>
+
 Callable<br>
+
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/callable.jpg)<br>
 控制台输出日志：
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/callable_log.jpg)<br>
 超时、自定义线程设置
 
-从控制台可以看见，异步响应的线程使用的是名为：MvcAsync1的线程。第一次再访问时，就是MvcAsync2了。若采用默认设置，会无限的创建新线程去处理异步请求，所以正常都需要配置一个线程池及超时时间。
-
+从控制台可以看见，异步响应的线程使用的是名为：MvcAsync1的线程。第一次再访问时，就是MvcAsync2了。若采用默认设置，会无限的创建新线程去处理异步请求，所以正常都需要配置一个线程池及超时时间。<br>
 编写一个配置类：CustomAsyncPool.java<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/CustomAsyncPool.jpg)<br>
-
 自定义一个超时异常处理类：CustomAsyncRequestTimeoutException.java<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/CustomAsyncRequestTimeoutException.jpg)<br>
 同时，在统一异常处理加入对CustomAsyncRequestTimeoutException类的处理即可，这样就有个统一的配置了。<br>
-
 之后，再运行就可以看见使用了自定义的线程池了，超时的可以自行模拟下：<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/CustomAsyncRequestTimeoutException_log.jpg)<br>
 
-DeferredResult
+DeferredResult<br>
 
 相比于callable，DeferredResult可以处理一些相对复杂一些的业务逻辑，最主要还是可以在另一个线程里面进行业务处理及返回，即可在两个完全不相干的线程间的通信。
-![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/DeferredResult.jpg.jpg)<br>
-
+![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/DeferredResult.jpg)<br>
 注意：返回结果时记得调用下setResult方法。
-![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/DeferredResult.jpg_log.jpg)<br>
+![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/DeferredResult_log.jpg)<br>
+题外话：利用DeferredResult可实现一些长连接的功能，比如当某个操作是异步时，我们可以保存这个DeferredResult对象，当异步通知回来时，我们在找回这个DeferredResult对象，之后在setResult会结果即可。提高性能。<br>
 
-题外话：利用DeferredResult可实现一些长连接的功能，比如当某个操作是异步时，我们可以保存这个DeferredResult对象，当异步通知回来时，我们在找回这个DeferredResult对象，之后在setResult会结果即可。提高性能。
-
-WebAsyncTask
+WebAsyncTask<br>
 
 使用方法都类似，只是WebAsyncTask是直接返回了。觉得就是写法不同而已<br>
 ![](https://raw.githubusercontent.com/licslan/licslan.github.io/master/img/WebAsyncTask.jpg)<br>
